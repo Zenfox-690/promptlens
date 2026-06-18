@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "PromptLens",
+  "version": "0.1.0",
+  "description": "Rewrites your AI prompts to be cleaner and token-efficient before you hit send.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://api.openai.com/*"],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*"
+      ],
+      "js": ["utils/sites.js", "content/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background/service_worker.js"
+  }
+}
