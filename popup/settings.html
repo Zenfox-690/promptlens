@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PromptLens settings</title>
+  <link rel="stylesheet" href="../styles/settings.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">PROMPTLENS</p>
+      <h1>Settings</h1>
+    </header>
+    <form id="settings-form">
+      <label for="provider">Provider</label>
+      <select id="provider" name="provider">
+        <option value="gemini">Google Gemini</option>
+        <option value="openai">OpenAI</option>
+      </select>
+
+      <label for="model">Model name</label>
+      <input id="model" name="model" maxlength="100" autocomplete="off" required>
+
+      <label for="api-key">API key for selected provider</label>
+      <input id="api-key" name="api-key" type="password" maxlength="512" autocomplete="new-password" placeholder="Leave blank to keep the saved key">
+      <p id="key-state" class="help"></p>
+
+      <label for="mode">Optimization mode</label>
+      <select id="mode" name="mode">
+        <option value="concise">Concise</option>
+        <option value="technical">Technical</option>
+        <option value="creative">Creative</option>
+        <option value="custom">Custom</option>
+      </select>
+
+      <label id="custom-label" for="custom-instructions" hidden>Custom instructions</label>
+      <textarea id="custom-instructions" name="custom-instructions" rows="3" maxlength="1200" placeholder="Additional preferences; preserve the original intent."></textarea>
+
+      <div class="actions">
+        <button class="primary" type="submit">Save settings</button>
+        <button id="remove-key" type="button">Remove saved key</button>
+      </div>
+      <p id="save-state" class="status" role="status" aria-live="polite"></p>
+    </form>
+
+    <section class="notice" aria-label="Data and credential handling">
+      <h2>Data and key handling</h2>
+      <p>When you choose Optimize, the current prompt and PromptLens instructions are sent only to the selected provider. No prompt history or telemetry is stored by this extension.</p>
+      <p>Keys are stored in this browser profile with <code>chrome.storage.local</code>, not synchronized. Browser storage is not a secure vault; anyone able to inspect or compromise this profile may recover a key. Saving a key does not test or validate it.</p>
+      <p class="provider-note">Gemini's unpaid tier may use submitted prompts and responses to improve Google services and may involve human review. Do not send sensitive content. Check current terms, region, model access, and quotas before use.</p>
+    </section>
+  </main>
+  <script src="settings.js"></script>
+</body>
+</html>

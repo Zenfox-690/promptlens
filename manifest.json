@@ -2,16 +2,24 @@
   "manifest_version": 3,
   "name": "PromptLens",
   "version": "0.1.0",
-  "description": "Rewrites your AI prompts to be cleaner and token-efficient before you hit send.",
+  "description": "Review and improve prompts before you submit them.",
   "permissions": ["storage"],
-  "host_permissions": ["https://api.openai.com/*"],
+  "host_permissions": [
+    "https://api.openai.com/*",
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "action": {
+    "default_title": "PromptLens settings",
+    "default_popup": "popup/settings.html"
+  },
   "content_scripts": [
     {
       "matches": [
         "https://chatgpt.com/*",
         "https://chat.openai.com/*"
       ],
-      "js": ["utils/sites.js", "content/content.js"],
+      "js": ["utils/sites.js", "content/editor.js", "content/content.js"],
+      "css": ["styles/overlay.css"],
       "run_at": "document_idle"
     }
   ],

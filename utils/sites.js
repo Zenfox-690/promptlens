@@ -1,8 +1,8 @@
 // utils/sites.js
-// Maps hostname -> CSS selector for the prompt input box on each site.
-// Loaded before content.js (see manifest.json content_scripts order).
+// Hostnames permitted to receive the ChatGPT content script.
+// Editor selectors are maintained in content/editor.js.
 
 const PROMPTLENS_SITES = {
-  "chatgpt.com": "#prompt-textarea",
-  "chat.openai.com": "#prompt-textarea"
+  "chatgpt.com": true,
+  "chat.openai.com": true
 };
